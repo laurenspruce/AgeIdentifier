@@ -1,10 +1,11 @@
 package example.example;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.LinkedHashMap;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for simple App.
@@ -93,7 +94,21 @@ public class CarAgeTest {
     }
 
     // calculateNextAgeIdentifier must return a LinkedHashMap key-value-pair
+    @Test
+    public void calculateNextAgeIdentifier_ShouldReturnLinkedHashMap() {
+        // Arrange
+        carAge.addAgeIdentifierToHashMap("03-2023", 25);
+        LinkedHashMap<String, Integer> expectedResult = new LinkedHashMap<>();
+        expectedResult.put("03-2023", 25);
 
+        // Act
+        LinkedHashMap<String, Integer> actualResult = carAge.calculateNextAgeIdentifier();
+
+        // Assert
+        assertNotNull(actualResult);
+        assertEquals(expectedResult, actualResult);
+    }
+    
     // addAgeIdentifierToHashMap must let you add values to LinkedHashMap
 
     // addAgeIdentifierToHashMap must let you add numbers as values to LinkedHashMap
