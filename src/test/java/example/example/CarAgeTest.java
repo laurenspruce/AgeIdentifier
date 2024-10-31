@@ -45,7 +45,21 @@ public class CarAgeTest {
         assertTrue(actualResult >= 10 && actualResult <= 99);
         assertEquals(expectedResult, actualResult);
     }
+    
     // returnNextAgeIdentifier must return a two-digit number
+    @Test
+    public void returnNextAgeIdentifier_ShouldReturnAboveZero() {
+        // Arrange
+        carAge.addAgeIdentifierToHashMap("03-2023", 10);
+        int expectedResult = 10;
+
+        // Act
+        int actualResult = carAge.returnNextAgeIdentifier();
+
+        // Assert
+        assertTrue(actualResult > 0);
+        assertEquals(expectedResult, actualResult);
+    }
 
     // returnNextAgeIdentifier must return a number above 00 (lowest numb)
 
