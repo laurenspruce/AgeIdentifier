@@ -77,9 +77,20 @@ public class CarAgeTest {
         assertEquals(expectedResult, actualResult);
     }
 
-
-
     // returnNextAgeIdentifier must return a positive number
+    @Test
+    public void returnNextAgeIdentifier_ShouldReturnPositiveNumber() {
+        // Arrange
+        carAge.addAgeIdentifierToHashMap("03-2023", 1);
+        int expectedResult = 1;
+
+        // Act
+        int actualResult = carAge.returnNextAgeIdentifier();
+
+        // Assert
+        assertTrue(actualResult > 0);
+        assertEquals(expectedResult, actualResult);
+    }
 
     // calculateNextAgeIdentifier must return a LinkedHashMap key-value-pair
 
