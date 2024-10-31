@@ -12,13 +12,13 @@ import org.junit.jupiter.api.Test;
 public class CarAgeTest {
 
     private ICarAge carAge;
-
+    // Method to add ages to map, return ages from map, and calculate next age in map
     @BeforeEach
     public void setUp() {
         carAge = new CarAge(); //Initialise the CarAge object before each test
     }
 
-    // Method to add ages to map, return ages from map, and calculate next age in map
+    // returnNextAgeIdentifier must return a number
     @Test
     public void return_next_age_identifier_should_return_a_number() {
         //Arrange
@@ -31,7 +31,8 @@ public class CarAgeTest {
         //Assert
         assertEquals(expectedResult, actualResult);
     }
-    // returnNextAgeIdentifier must return a number
+
+    // returnNextAgeIdentifier must return a two-digit number
     @Test
     public void return_next_age_identifier_should_return_two_digit_number() {
         // Arrange
@@ -45,8 +46,8 @@ public class CarAgeTest {
         assertTrue(actualResult >= 10 && actualResult <= 99);
         assertEquals(expectedResult, actualResult);
     }
-    
-    // returnNextAgeIdentifier must return a two-digit number
+
+    // returnNextAgeIdentifier must return a number above 0
     @Test
     public void returnNextAgeIdentifier_ShouldReturnAboveZero() {
         // Arrange
@@ -61,9 +62,22 @@ public class CarAgeTest {
         assertEquals(expectedResult, actualResult);
     }
 
-    // returnNextAgeIdentifier must return a number above 00 (lowest numb)
+    // returnNextAgeIdentifier must return a number below 100
+    @Test
+    public void return_next_age_identifier_should_return_below_hundred() {
+        // Arrange
+        carAge.addAgeIdentifierToHashMap("03-2023", 99);
+        int expectedResult = 99;
 
-    // returnNextAgeIdentifier must return a number below ?? (is there an actual max)
+        // Act
+        int actualResult = carAge.returnNextAgeIdentifier();
+
+        // Assert
+        assertTrue(actualResult < 100);
+        assertEquals(expectedResult, actualResult);
+    }
+
+
 
     // returnNextAgeIdentifier must return a positive number
 
